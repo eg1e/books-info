@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.egleprojects</groupId>
-	<artifactId>book-info</artifactId>
+	<artifactId>books-info</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>book-info</name>
-	<description>Spring Boot Book API</description>
+	<name>books-info</name>
+	<description>Spring Boot Books API</description>
 	<url/>
 	<licenses>
 		<license/>

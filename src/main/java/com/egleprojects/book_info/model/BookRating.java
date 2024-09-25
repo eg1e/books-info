@@ -10,7 +10,7 @@ public class BookRating {
     private int rating;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id")
-//    @JsonIgnore
+
     private Book book;
 
     public BookRating(Long Id, int rating, Book book) {
