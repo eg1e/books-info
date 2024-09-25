@@ -26,7 +26,7 @@
   -      "minprice": 1000
   - PUT /books: Update an existing book
   - POST /books: Add a new book to the collection
-- *rating-controller**:
+- **rating-controller**:
   - GET /ratings/{bookId}: Get all ratings that this book has
   - POST /ratings/{bookId}: Rate a book by ID between 1 and 5
   - GET /ratings/average/{bookId}: Get an average rating of the book
