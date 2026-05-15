@@ -92,7 +92,7 @@ class BookServiceTest {
 
         when(bookRepository.findAll(any(Specification.class))).thenReturn(bookList);
 
-        List<Book> result = bookService.getBook(allBooks);
+        List<Book> result = bookService.getBooks(allBooks);
 
         assertNotNull(result);
         assertEquals(3, result.size());

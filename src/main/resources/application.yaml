@@ -1,14 +1,27 @@
 spring:
   application:
     name: book-info
+
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/books}
+    username: ${SPRING_DATASOURCE_USERNAME:books}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+server:
+  ssl:
+    enabled: ${SSL_ENABLED:false}
+    key-store: classpath:keystore.p12
+    key-store-password: ${SSL_KEYSTORE_PASSWORD:changeit}
+    key-store-type: PKCS12
+  port: ${SERVER_PORT:8080}
+
+jwt:
+  secret: ${JWT_SECRET:MyBookInfoApplicationSecretKeyForJWTTokenGenerationAndValidation12345}
+  expiration: ${JWT_EXPIRATION:86400000}

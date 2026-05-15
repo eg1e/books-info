@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+input,
+button {
+  padding: 8px;
+  font-size: 1em;
+}
+button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
+#books-list {
+  list-style: none;
+  padding: 0;
+}
+#books-list li {
+  background: #f9f9f9;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 4px;
+}
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.book-info {
+  flex: 1;
+}
+.book-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.rating-input {
+  width: 70px;
+  padding: 6px;
+}
+.btn-rate,
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  font-size: 0.9em;
+}
+.btn-delete {
+  background: #dc3545;
+}
+.btn-delete:hover {
+  background: #c82333;
+}
+.btn-edit {
+  background: #28a745;
+}
+.btn-edit:hover {
+  background: #218838;
+}
+#login-message,
+#add-book-message,
+#update-book-message {
+  color: #d9534f;
+  margin-top: 8px;
+}
+#update-book-section {
+  margin-top: 24px;
+  padding: 16px;
+  background: #e9ecef;
+  border-radius: 4px;
+}

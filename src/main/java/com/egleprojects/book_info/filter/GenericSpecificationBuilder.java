@@ -8,6 +8,10 @@ import java.util.Map;
 
 public class GenericSpecificationBuilder<T> {
     public Specification<T> buildSpecification(Map<String, Object> filters) {
+        if (filters == null || filters.isEmpty()) {
+            return Specification.where(null);
+        }
+
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
             for (Map.Entry<String, Object> filter : filters.entrySet()) {
@@ -17,6 +21,7 @@ public class GenericSpecificationBuilder<T> {
                 switch (key) {
                     case String k when k.startsWith("min"): {
                         String field = key.substring(3);
+                        field = field.substring(0, 1).toLowerCase() + field.substring(1);
                         predicate = criteriaBuilder.and(
                                 predicate,
                                 criteriaBuilder.greaterThanOrEqualTo(root.get(field), value.toString())
@@ -25,11 +30,13 @@ public class GenericSpecificationBuilder<T> {
                     }
                     case String k when k.startsWith("max"): {
                         String field = k.substring(3);
+                        field = field.substring(0, 1).toLowerCase() + field.substring(1);
                         predicate = criteriaBuilder.and(predicate, criteriaBuilder.lessThanOrEqualTo(root.get(field), value.toString()));
                         break;
                     }
                     case String k when k.startsWith("between"): {
                         String field = key.substring(7);
+                        field = field.substring(0, 1).toLowerCase() + field.substring(1);
                         String[] range = ((String) value).split(",");
                         predicate = criteriaBuilder.and(predicate, criteriaBuilder.between(root.get(field), range[0], range[1]));
                         break;

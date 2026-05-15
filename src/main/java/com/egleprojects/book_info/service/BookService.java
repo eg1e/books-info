@@ -22,7 +22,7 @@ public class BookService {
         this.specificationBuilder = new GenericSpecificationBuilder<>();
     }
 
-    public List<Book> getBook(Map<String, Object> filters) {
+    public List<Book> getBooks(Map<String, Object> filters) {
         var specification = getSpecification(filters);
         return bookRepository.findAll(specification);
     }
@@ -41,10 +41,20 @@ public class BookService {
             existingBook.setAuthor(updatedBookData.getAuthor());
             existingBook.setPrice(updatedBookData.getPrice());
             existingBook.setPublishedYear(updatedBookData.getPublishedYear());
+            existingBook.setPages(updatedBookData.getPages());
             return bookRepository.save(existingBook);
         } else {
             throw new ResourceNotFoundException("Book with an ID " + updatedBookData.getId() + " is not found");
         }
+    }
+
+    public void deleteBookById(Long id) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Book with an ID " + id + " is not found")
+                );
+
+        bookRepository.delete(book);
     }
 
     private Specification<Book> getSpecification(Map<String, Object> filters) {

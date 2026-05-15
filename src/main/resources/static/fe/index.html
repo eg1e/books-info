@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books Info App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Books Info App</h1>
+      <div id="auth-section">
+        <h2>Login</h2>
+        <form id="login-form">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <div id="login-message"></div>
+      </div>
+      <div id="register-section">
+        <h2>Register</h2>
+        <form id="register-form">
+          <input
+            type="text"
+            id="register-username"
+            placeholder="Username"
+            required
+          />
+          <input
+            type="email"
+            id="register-email"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Register</button>
+        </form>
+        <div id="register-message"></div>
+      </div>
+      <div id="books-section" style="display: none">
+        <h2>Books</h2>
+        <div id="filters">
+          <h3>Filters</h3>
+          <input type="text" id="filter-title" placeholder="Title" />
+          <input type="text" id="filter-author" placeholder="Author" />
+          <input type="number" id="filter-minPrice" placeholder="Min Price" />
+          <input type="number" id="filter-maxPrice" placeholder="Max Price" />
+          <input type="number" id="filter-minPages" placeholder="Min Pages" />
+          <input type="number" id="filter-maxPages" placeholder="Max Pages" />
+          <input
+            type="number"
+            id="filter-minPublishedYear"
+            placeholder="Min Year"
+          />
+          <input
+            type="number"
+            id="filter-maxPublishedYear"
+            placeholder="Max Year"
+          />
+          <button id="apply-filters">Apply Filters</button>
+          <button id="clear-filters">Clear Filters</button>
+        </div>
+        <button id="load-books">Load Books</button>
+        <ul id="books-list"></ul>
+
+        <h3>Add Book</h3>
+        <form id="add-book-form">
+          <input type="text" id="title" placeholder="Title" required />
+          <input type="text" id="author" placeholder="Author" required />
+          <input type="number" id="publishedYear" placeholder="Year" required />
+          <input type="number" id="price" placeholder="Price" required />
+          <input type="number" id="pages" placeholder="Pages" required />
+          <button type="submit">Add Book</button>
+        </form>
+        <div id="add-book-message"></div>
+
+        <div id="update-book-section" style="display: none">
+          <h3>Update Book</h3>
+          <form id="update-book-form">
+            <input type="hidden" id="update-id" />
+            <input type="text" id="update-title" placeholder="Title" required />
+            <input
+              type="text"
+              id="update-author"
+              placeholder="Author"
+              required
+            />
+            <input
+              type="number"
+              id="update-publishedYear"
+              placeholder="Year"
+              required
+            />
+            <input
+              type="number"
+              id="update-price"
+              placeholder="Price"
+              required
+            />
+            <input
+              type="number"
+              id="update-pages"
+              placeholder="Pages"
+              required
+            />
+            <button type="submit">Update Book</button>
+            <button type="button" id="cancel-update">Cancel</button>
+          </form>
+          <div id="update-book-message"></div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

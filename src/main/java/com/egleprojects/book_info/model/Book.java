@@ -1,6 +1,7 @@
 package com.egleprojects.book_info.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.util.List;
 
@@ -11,12 +12,26 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @NotBlank(message = "Title is required")
+    @Size(min = 1, max = 200, message = "Title must be between 1 and 200 characters")
     private String title;
+    
+    @NotBlank(message = "Author is required")
+    @Size(min = 1, max = 100, message = "Author must be between 1 and 100 characters")
     private String author;
+    
+    @Min(value = 1000, message = "Published year must be valid")
+    @Max(value = 2100, message = "Published year cannot be in the future")
     private int publishedYear;
+    
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<BookRating> ratings;
+    
+    @Min(value = 0, message = "Price cannot be negative")
     private Integer price;
+    
+    @Min(value = 1, message = "Pages must be at least 1")
     private int pages;
 
     public Book(Long id, String title, String author, int publishedYear, List<BookRating> ratings, Integer price, int pages) {
@@ -74,5 +89,9 @@ public class Book {
 
     public int getPages() {
         return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 }
